@@ -1,3 +1,86 @@
+.carousel .slide {
+  text-align: left !important;
+}
 .balello-carousel-wrapper {
   margin-top: 50px;
+}
+
+.balello-carousel-step-1-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.balello-carousel-step-2-form {
+  margin-top: 16px;
+}
+
+.balello-carousel-step-2-form-package-size,
+.balello-carousel-step-2-form-package-width {
+  margin-top: 12px;
+}
+
+.balello-carousel-step-2-info-to-from {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.balello-carousel-step-2-info-your-info {
+  margin-top: 12px;
+}
+
+.balello-carousel-step-3-info-package {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 12px;
+}
+
+.balello-carousel-step-3-form-label-format-input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.balello-carousel-step-4-label-img {
+  width: 75%;
+}
+
+.balello-carousel-nav-buttons-bottom {
+  display: grid;
+  justify-items: end;
+  margin-top: 16px;
+}
+
+.balello-carousel-nav-buttons-top {
+  margin-bottom: 16px;
+}
+
+.balello-label-radio-button {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.balello-shipping-option-radio-button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.balello-shipping-option-price {
+  text-align: end;
+}
+
+.balello-label-format-option-button {
+  background: none;
+  border: none;
+}
+
+.balello-title {
+  font-size: 24px;
+}
+
+.balello-header {
+  text-transform: uppercase;
+}
+
+.balello-input-group {
+  display: grid;
+  gap: 8px;
 }
