@@ -1,9 +1,6 @@
 .carousel .slide {
   text-align: left !important;
 }
-.balello-carousel-wrapper {
-  margin-top: 50px;
-}
 
 .balello-carousel-step-1-form {
   display: grid;
@@ -58,6 +55,21 @@
   grid-template-columns: auto auto;
 }
 
+.balello-carousel-step-3-shipping-options-input-group {
+  display: grid;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.balello-shipping-option-radio-button-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.balello-label-format-option-button {
+  padding: none !important;
+}
+
 .balello-shipping-option-radio-button {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -77,10 +89,22 @@
 }
 
 .balello-header {
-  text-transform: uppercase;
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.balello-content {
+  font-size: 14px;
 }
 
 .balello-input-group {
   display: grid;
   gap: 8px;
+}
+
+.balello-button {
+  background: none;
+  border: none;
+  padding: unset;
+  cursor: pointer;
 }

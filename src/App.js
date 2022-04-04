@@ -67,7 +67,9 @@ function App({ domElement }) {
 
                   <div>
                     <input type="checkbox" />
-                    <label> Residential Address</label>
+                    <label className="balello-content">
+                      Residential Address
+                    </label>
                   </div>
                 </div>
               </div>
@@ -110,23 +112,29 @@ function App({ domElement }) {
                     placeholder="Zip Code"
                   />
 
-                  <div>
+                  <div className="balello-checkbox">
                     <input type="checkbox" />
-                    <label> Residential Address</label>
+                    <label className="balello-content">
+                      Residential Address
+                    </label>
                   </div>
                 </div>
               </div>
             </form>
 
             <div className="balello-carousel-nav-buttons-bottom">
-              <button onClick={incrementCurrentItem}>Continue</button>
+              <button onClick={incrementCurrentItem} className="balello-button">
+                Continue
+              </button>
             </div>
           </div>
 
           {/* Step 1 */}
           <div className="balello-carousel-item">
             <div className="balello-carousel-nav-buttons-top">
-              <button onClick={decrementCurrentItem}>Edit</button>
+              <button onClick={decrementCurrentItem} className="balello-button">
+                Back
+              </button>
             </div>
 
             <div className="balello-carousel-step-2-info">
@@ -160,24 +168,33 @@ function App({ domElement }) {
             <form className="balello-carousel-step-2-form">
               <div className="balello-carousel-step-2-form-package-size">
                 <div className="balello-title">Package Size</div>
-                <div className="balello-carousel-step-2-form-package-size-input-group">
-                  <span>
+                <div className="balello-carousel-step-2-form-package-size-input-group balello-content">
+                  <span
+                    className="balello-input-group"
+                    style={{ marginTop: "8px" }}
+                  >
                     <input
                       type="text"
                       id="balello-input-package-size-width"
                       placeholder="Width"
                     />
                   </span>
-                  x
-                  <span>
+
+                  <span
+                    className="balello-input-group"
+                    style={{ marginTop: "8px" }}
+                  >
                     <input
                       type="text"
                       id="balello-input-package-size-length"
                       placeholder="Length"
                     />
                   </span>
-                  x
-                  <span>
+
+                  <span
+                    className="balello-input-group"
+                    style={{ marginTop: "8px" }}
+                  >
                     <input
                       type="text"
                       id="balello-input-package-size-height"
@@ -192,7 +209,10 @@ function App({ domElement }) {
               <div className="balello-carousel-step-2-form-package-width">
                 <div className="balello-title">Package Width</div>
                 <div className="balello-carousel-step-2-form-package-width-input-group">
-                  <span>
+                  <span
+                    className="balello-input-group"
+                    style={{ marginTop: "8px" }}
+                  >
                     <input
                       type="text"
                       id="balello-input-package-weight-oz"
@@ -200,7 +220,10 @@ function App({ domElement }) {
                     />
                   </span>
 
-                  <span>
+                  <span
+                    className="balello-input-group"
+                    style={{ marginTop: "8px" }}
+                  >
                     <input
                       type="text"
                       id="balello-input-package-weight-lbs"
@@ -212,14 +235,18 @@ function App({ domElement }) {
             </form>
 
             <div className="balello-carousel-nav-buttons-bottom">
-              <button onClick={incrementCurrentItem}>Continue</button>
+              <button onClick={incrementCurrentItem} className="balello-button">
+                Continue
+              </button>
             </div>
           </div>
 
           {/* Step 2 */}
           <div className="balello-carousel-item">
             <div className="balello-carousel-nav-buttons-top">
-              <button onClick={decrementCurrentItem}>Edit</button>
+              <button onClick={decrementCurrentItem} className="balello-button">
+                Back
+              </button>
             </div>
 
             <div className="balello-carousel-step-2-info">
@@ -264,7 +291,7 @@ function App({ domElement }) {
                 <div className="balello-carousel-step-3-shipping-options-input-group">
                   {[1, 1, 1, 1, 1, 1, 1, 1].map(() => {
                     return (
-                      <div className="balello-shipping-option-radio-button">
+                      <div className="balello-shipping-option-radio-button-group">
                         <input
                           type="radio"
                           id="shipping_option"
@@ -330,7 +357,9 @@ function App({ domElement }) {
             </form>
 
             <div className="balello-carousel-nav-buttons-bottom">
-              <button onClick={incrementCurrentItem}>Continue</button>
+              <button onClick={incrementCurrentItem} className="balello-button">
+                Continue
+              </button>
             </div>
           </div>
 
@@ -377,7 +406,12 @@ function App({ domElement }) {
               </div>
             </div>
             <div className="balello-carousel-nav-buttons-bottom">
-              <button onClick={incrementCurrentItem}>Done</button>
+              <button
+                className="balello-button"
+                onClick={() => setCurrentItem(0)}
+              >
+                Done
+              </button>
             </div>
           </div>
         </Carousel>
