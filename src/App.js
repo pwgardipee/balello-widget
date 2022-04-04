@@ -1,292 +1,170 @@
 import React, { useState } from "react";
 import "./App.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
 
 function App({ domElement }) {
   // const testVariable = domElement.getAttribute("data-balello");
-  const [currentItem, setCurrentItem] = useState(0);
-
-  function incrementCurrentItem() {
-    setCurrentItem(currentItem + 1);
-  }
-  function decrementCurrentItem() {
-    setCurrentItem(currentItem - 1);
-  }
+  const [showingShippingOptions, setShowingShippingOptions] = useState(false);
+  const [showingShippingResult, setShowingShippingResult] = useState(false);
 
   return (
     <div className="balello-widget-app">
-      <div className="balello-carousel-wrapper">
-        <Carousel
-          selectedItem={currentItem}
-          showStatus={false}
-          showIndicators={false}
-          showArrows={false}
-        >
-          {/* Step 0 */}
-          <div className="balello-carousel-item">
-            <form className="balello-carousel-step-1-form">
-              <div>
-                <div className="balello-title">To</div>
+      <div className="balello-grid-wrapper">
+        {/* Address Information*/}
+        <div className="balello-grid-item">
+          <div className="balello-title">Address Information</div>
+          <form className="balello-carousel-step-1-form">
+            <div>
+              <div className="balello-header">To</div>
+              <div className="balello-input-group">
+                <input
+                  type="text"
+                  id="balello-input-to-name"
+                  placeholder="Name"
+                />
+                <input
+                  type="tel"
+                  id="balello-input-to-phone"
+                  placeholder="Phone"
+                />
+                <input
+                  type="text"
+                  id="balello-input-to-address-1"
+                  placeholder="Address Line 1"
+                />
+                <input
+                  type="text"
+                  id="balello-input-to-address-2"
+                  placeholder="Address Line 2"
+                />
+                <input
+                  type="text"
+                  id="balello-input-to-city"
+                  placeholder="City"
+                />
+                <input
+                  type="state"
+                  id="balello-input-to-state"
+                  placeholder="State"
+                />
+                <input
+                  type="number"
+                  id="balello-input-to-zipcode"
+                  placeholder="Zip Code"
+                />
+
+                <div>
+                  <input type="checkbox" />
+                  <label className="balello-content">Residential Address</label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="balello-header">From</div>
+              <div className="balello-input-group">
+                <input
+                  type="text"
+                  id="balello-input-from-name"
+                  placeholder="Name"
+                />
+                <input
+                  type="tel"
+                  id="balello-input-from-phone"
+                  placeholder="Phone"
+                />
+                <input
+                  type="text"
+                  id="balello-input-from-address-1"
+                  placeholder="Address Line 1"
+                />
+                <input
+                  type="text"
+                  id="balello-input-from-address-2"
+                  placeholder="Address Line 2"
+                />
+                <input
+                  type="text"
+                  id="balello-input-from-city"
+                  placeholder="City"
+                />
+                <input
+                  type="state"
+                  id="balello-input-from-state"
+                  placeholder="State"
+                />
+                <input
+                  type="number"
+                  id="balello-input-from-zipcode"
+                  placeholder="Zip Code"
+                />
+
+                <div className="balello-checkbox">
+                  <input type="checkbox" />
+                  <label className="balello-content">Residential Address</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        {/* Package Details */}
+        <div className="balello-grid-item">
+          <div className="balello-title">Package Details</div>
+          <form className="balello-carousel-step-2-form">
+            <div className="balello-carousel-step-2-form-package-size">
+              <div className="balello-header"> Size</div>
+              <div className="balello-carousel-step-2-form-package-size-input-group balello-content">
                 <div className="balello-input-group">
                   <input
                     type="text"
-                    id="balello-input-to-name"
-                    placeholder="Name"
-                  />
-                  <input
-                    type="tel"
-                    id="balello-input-to-phone"
-                    placeholder="Phone"
+                    id="balello-input-package-size-width"
+                    placeholder="Width"
                   />
                   <input
                     type="text"
-                    id="balello-input-to-address-1"
-                    placeholder="Address Line 1"
+                    id="balello-input-package-size-length"
+                    placeholder="Length"
                   />
                   <input
                     type="text"
-                    id="balello-input-to-address-2"
-                    placeholder="Address Line 2"
+                    id="balello-input-package-size-height"
+                    placeholder="Height"
                   />
-                  <input
-                    type="text"
-                    id="balello-input-to-city"
-                    placeholder="City"
-                  />
-                  <input
-                    type="state"
-                    id="balello-input-to-state"
-                    placeholder="State"
-                  />
-                  <input
-                    type="number"
-                    id="balello-input-to-zipcode"
-                    placeholder="Zip Code"
-                  />
-
-                  <div>
-                    <input type="checkbox" />
-                    <label className="balello-content">
-                      Residential Address
-                    </label>
-                  </div>
                 </div>
               </div>
-              <div>
-                <div className="balello-title">From</div>
+            </div>
+            <div className="balello-carousel-step-2-form-package-width">
+              <div className="balello-header">Weight</div>
+              <div className="balello-carousel-step-2-form-package-width-input-group">
                 <div className="balello-input-group">
                   <input
                     type="text"
-                    id="balello-input-from-name"
-                    placeholder="Name"
-                  />
-                  <input
-                    type="tel"
-                    id="balello-input-from-phone"
-                    placeholder="Phone"
+                    id="balello-input-package-weight-oz"
+                    placeholder="Oz"
                   />
                   <input
                     type="text"
-                    id="balello-input-from-address-1"
-                    placeholder="Address Line 1"
+                    id="balello-input-package-weight-lbs"
+                    placeholder="Lbs"
                   />
-                  <input
-                    type="text"
-                    id="balello-input-from-address-2"
-                    placeholder="Address Line 2"
-                  />
-                  <input
-                    type="text"
-                    id="balello-input-from-city"
-                    placeholder="City"
-                  />
-                  <input
-                    type="state"
-                    id="balello-input-from-state"
-                    placeholder="State"
-                  />
-                  <input
-                    type="number"
-                    id="balello-input-from-zipcode"
-                    placeholder="Zip Code"
-                  />
-
-                  <div className="balello-checkbox">
-                    <input type="checkbox" />
-                    <label className="balello-content">
-                      Residential Address
-                    </label>
-                  </div>
                 </div>
               </div>
-            </form>
-
-            <div className="balello-carousel-nav-buttons-bottom">
-              <button onClick={incrementCurrentItem} className="balello-button">
-                Continue
-              </button>
             </div>
+          </form>
+          <div className="balello-carousel-nav-buttons-bottom">
+            <button
+              className="balello-button"
+              onClick={() => setShowingShippingOptions(true)}
+            >
+              Calculate Rates
+            </button>
           </div>
+        </div>
 
-          {/* Step 1 */}
-          <div className="balello-carousel-item">
-            <div className="balello-carousel-nav-buttons-top">
-              <button onClick={decrementCurrentItem} className="balello-button">
-                Back
-              </button>
-            </div>
-
-            <div className="balello-carousel-step-2-info">
-              <div className="balello-carousel-step-2-info-to-from">
-                <div>
-                  <div className="balello-title">Ship From</div>
-                  <div className="balello-header">Peyton Gardipee</div>
-                  <div className="balello-content">
-                    900 Presidio Ave Apt 10, San Francisco CA, 94115, US
-                  </div>
-                </div>
-                <div>
-                  <div className="balello-title">Ship To</div>
-                  <div className="balello-header">Peyton Gardipee</div>
-                  <div className="balello-content">
-                    900 Presidio Ave Apt 10, San Francisco CA, 94115, US
-                  </div>
-                </div>
-              </div>
-              <div className="balello-carousel-step-2-info-your-info">
-                <div>
-                  <div className="balello-title">Your Information</div>
-                  <div className="balello-header">Email</div>
-                  <div className="balello-content">
-                    peytongardipee@gmail.com
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <form className="balello-carousel-step-2-form">
-              <div className="balello-carousel-step-2-form-package-size">
-                <div className="balello-title">Package Size</div>
-                <div className="balello-carousel-step-2-form-package-size-input-group balello-content">
-                  <span
-                    className="balello-input-group"
-                    style={{ marginTop: "8px" }}
-                  >
-                    <input
-                      type="text"
-                      id="balello-input-package-size-width"
-                      placeholder="Width"
-                    />
-                  </span>
-
-                  <span
-                    className="balello-input-group"
-                    style={{ marginTop: "8px" }}
-                  >
-                    <input
-                      type="text"
-                      id="balello-input-package-size-length"
-                      placeholder="Length"
-                    />
-                  </span>
-
-                  <span
-                    className="balello-input-group"
-                    style={{ marginTop: "8px" }}
-                  >
-                    <input
-                      type="text"
-                      id="balello-input-package-size-height"
-                      placeholder="Height"
-                    />
-                  </span>
-                  <span className="balello-carousel-step-2-form-units">
-                    Inches
-                  </span>
-                </div>
-              </div>
-              <div className="balello-carousel-step-2-form-package-width">
-                <div className="balello-title">Package Width</div>
-                <div className="balello-carousel-step-2-form-package-width-input-group">
-                  <span
-                    className="balello-input-group"
-                    style={{ marginTop: "8px" }}
-                  >
-                    <input
-                      type="text"
-                      id="balello-input-package-weight-oz"
-                      placeholder="Oz"
-                    />
-                  </span>
-
-                  <span
-                    className="balello-input-group"
-                    style={{ marginTop: "8px" }}
-                  >
-                    <input
-                      type="text"
-                      id="balello-input-package-weight-lbs"
-                      placeholder="Lbs"
-                    />
-                  </span>
-                </div>
-              </div>
-            </form>
-
-            <div className="balello-carousel-nav-buttons-bottom">
-              <button onClick={incrementCurrentItem} className="balello-button">
-                Continue
-              </button>
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="balello-carousel-item">
-            <div className="balello-carousel-nav-buttons-top">
-              <button onClick={decrementCurrentItem} className="balello-button">
-                Back
-              </button>
-            </div>
-
-            <div className="balello-carousel-step-2-info">
-              <div className="balello-carousel-step-2-info-to-from">
-                <div>
-                  <div className="balello-title">Ship From</div>
-                  <div className="balello-header">Peyton Gardipee</div>
-                  <div className="balello-content">
-                    900 Presidio Ave Apt 10, San Francisco CA, 94115, US
-                  </div>
-                </div>
-                <div>
-                  <div className="balello-title">Ship To</div>
-                  <div className="balello-header">Peyton Gardipee</div>
-                  <div className="balello-content">
-                    900 Presidio Ave Apt 10, San Francisco CA, 94115, US
-                  </div>
-                </div>
-              </div>
-              <div className="balello-carousel-step-3-info-package">
-                <div>
-                  <div className="balello-title">Your Information</div>
-                  <div className="balello-header">Email</div>
-                  <div className="balello-content">
-                    peytongardipee@gmail.com
-                  </div>
-                </div>
-                <div>
-                  <div className="balello-title">Package Details</div>
-                  <div className="balello-header">5x6x16 inches</div>
-                  <div className="balello-content">4lbs 12oz</div>
-                </div>
-              </div>
-            </div>
-
+        {/* Shipping Options */}
+        {showingShippingOptions && (
+          <div className="balello-grid-item">
             <form className="balello-carousel-step-3-form">
-              <div
-                classname="balello-carousel-step-3-shipping-options"
-                style={{ marginTop: `12px` }}
-              >
+              <div classname="balello-carousel-step-3-shipping-options">
                 <div className="balello-title">Shipping Options</div>
                 <div className="balello-carousel-step-3-shipping-options-input-group">
                   {[1, 1, 1, 1, 1, 1, 1, 1].map(() => {
@@ -317,7 +195,7 @@ function App({ domElement }) {
               </div>
               <div
                 classname="balello-carousel-step-3-form-label-format"
-                style={{ marginTop: `12px` }}
+                style={{ marginTop: "24px" }}
               >
                 <div className="balello-title">Label Format</div>
                 <div className="balello-carousel-step-3-form-label-format-input-group">
@@ -357,14 +235,19 @@ function App({ domElement }) {
             </form>
 
             <div className="balello-carousel-nav-buttons-bottom">
-              <button onClick={incrementCurrentItem} className="balello-button">
-                Continue
+              <button
+                className="balello-button"
+                onClick={() => setShowingShippingResult(true)}
+              >
+                Payment
               </button>
             </div>
           </div>
+        )}
 
-          {/* Step 3 */}
-          <div className="balello-carousel-item">
+        {/* Step 3 */}
+        {showingShippingResult && (
+          <div className="balello-grid-item">
             <div>
               <div className="balello-title">Your label is ready!</div>
               <div className="balello-content">
@@ -382,24 +265,16 @@ function App({ domElement }) {
                 />
               </div>
 
-              <div style={{ marginTop: "12px" }}>
+              <div style={{ marginTop: "24px" }}>
                 <div className="balello-title">Label Formats</div>
                 <div className="balello-carousel-step-4-label-format-options">
-                  <button className="balello-label-format-option-button">
-                    PDF
-                  </button>
-                  <button className="balello-label-format-option-button">
-                    PNG
-                  </button>
-                  <button className="balello-label-format-option-button">
-                    ZPL
-                  </button>
-                  <button className="balello-label-format-option-button">
-                    HREF
-                  </button>
+                  <button className="balello-button-small">PDF</button>
+                  <button className="balello-button-small">PNG</button>
+                  <button className="balello-button-small">ZPL</button>
+                  <button className="balello-button-small">HREF</button>
                 </div>
               </div>
-              <div style={{ marginTop: "12px" }}>
+              <div style={{ marginTop: "24px" }}>
                 <div className="balello-title">Account Information</div>
                 <div className="balello-header">Peyton Gadipee</div>
                 <div className="balello-content">peytongardipee@gmail.com</div>
@@ -408,13 +283,16 @@ function App({ domElement }) {
             <div className="balello-carousel-nav-buttons-bottom">
               <button
                 className="balello-button"
-                onClick={() => setCurrentItem(0)}
+                onClick={() => {
+                  setShowingShippingOptions(false);
+                  setShowingShippingResult(false);
+                }}
               >
                 Done
               </button>
             </div>
           </div>
-        </Carousel>
+        )}
       </div>
     </div>
   );
