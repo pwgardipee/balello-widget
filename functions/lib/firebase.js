@@ -1,9 +1,9 @@
 const functions = require("firebase-functions");
 const { getFirestore } = require("firebase-admin/firestore");
-const { initializeApp } = require("firebase-admin");
+const admin = require("firebase-admin");
 
 //Initialize App
-initializeApp();
+admin.initializeApp();
 
 module.exports = {
   functions,
