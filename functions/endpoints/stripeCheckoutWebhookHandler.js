@@ -1,6 +1,7 @@
 // Import library functions
 const { functions, db } = require("../lib/firebase");
 const ShipEngine = require("../lib/shipEngine");
+const SendGrid = require("../lib/sendGrid");
 const cors = require("cors")({ origin: true });
 
 async function completedHandler({ data }) {
@@ -22,6 +23,19 @@ async function completedHandler({ data }) {
     labelLayout: "4x6",
     displayScheme: labelSession.data().displayScheme,
   });
+
+  //Send email to user with their new label
+  const user = await db.collection("users").doc(userID).get();
+
+  const msg = {
+    to: user.data().email,
+    from: functions.config().send_grid.from_email,
+    templateId: functions.config().send_grid.shipping_label_template_id,
+    dynamicTemplateData: {
+      label_download: label.labelDownload,
+    },
+  };
+  await SendGrid.send(msg);
 
   // Update label session with label information
   labelSession.ref.update({ label });
