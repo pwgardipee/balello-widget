@@ -1,2 +1,4 @@
 /node_modules
 .cache
+ui-debug.log
+firestore-debug.log
