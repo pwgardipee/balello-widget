@@ -144,7 +144,7 @@ module.exports = functions.https.onRequest(async (request, response) => {
       });
 
       // Return the payment link as the response
-      response.send({ paymentLink: session.url });
+      response.send(session);
     } catch (err) {
       response.send(err);
     }

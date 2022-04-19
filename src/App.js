@@ -13,6 +13,9 @@ import {
 } from "firebase/firestore";
 import BalelloAPI from "./lib/balelloAPI";
 
+import { STRIPE_API_KEY } from "./lib/stripe";
+import { loadStripe } from "@stripe/stripe-js";
+
 const balelloAPI = new BalelloAPI();
 
 function App({ domElement }) {
@@ -234,9 +237,17 @@ function App({ domElement }) {
           paymentCancelURL,
           selectedLabelScheme
         )
-        .then((resp) => {
+        .then(async (resp) => {
           setLoadingPayment(false);
-          window.open(resp.data.paymentLink, "_blank").focus();
+          // window.open(resp.data.paymentLink, "_blank").focus();
+          const stripe = await loadStripe(STRIPE_API_KEY);
+
+          return stripe.redirectToCheckout({ sessionId: resp.data.id });
+        })
+        .then(function (result) {
+          if (result.error) {
+            alert(result.error.message);
+          }
         });
     }
   }, [
