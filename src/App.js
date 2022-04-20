@@ -427,19 +427,19 @@ function App({ domElement }) {
                     <input
                       type="text"
                       id="balello-input-package-size-width"
-                      placeholder="Width"
+                      placeholder="Width (inches)"
                       onChange={(e) => setPackageWidth(e.target.value)}
                     />
                     <input
                       type="text"
                       id="balello-input-package-size-length"
-                      placeholder="Length"
+                      placeholder="Length (inches)"
                       onChange={(e) => setPackageLength(e.target.value)}
                     />
                     <input
                       type="text"
                       id="balello-input-package-size-height"
-                      placeholder="Height"
+                      placeholder="Height (inches)"
                       onChange={(e) => setPackageHeight(e.target.value)}
                     />
                   </div>
@@ -451,15 +451,15 @@ function App({ domElement }) {
                   <div className="balello-input-group">
                     <input
                       type="text"
-                      id="balello-input-package-weight-oz"
-                      placeholder="Oz"
-                      onChange={(e) => setPackageWeigthOz(e.target.value)}
-                    />
-                    <input
-                      type="text"
                       id="balello-input-package-weight-lbs"
                       placeholder="Lbs"
                       onChange={(e) => setPackageWeigthLbs(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      id="balello-input-package-weight-oz"
+                      placeholder="Oz"
+                      onChange={(e) => setPackageWeigthOz(e.target.value)}
                     />
                   </div>
                 </div>
