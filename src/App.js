@@ -12,6 +12,7 @@ import {
   doc,
 } from "firebase/firestore";
 import BalelloAPI from "./lib/balelloAPI";
+import US_STATES from "./assets/us_states.json";
 
 import { STRIPE_API_KEY } from "./lib/stripe";
 import { loadStripe } from "@stripe/stripe-js";
@@ -26,7 +27,7 @@ function App({ domElement }) {
   const [toAddress1, setToAddress1] = useState("");
   const [toAddress2, setToAddress2] = useState("");
   const [toCity, setToCity] = useState("");
-  const [toState, setToState] = useState("");
+  const [toState, setToState] = useState(US_STATES[0].Code);
   const [toZip, setToZip] = useState("");
   const [toResidential, setToResidential] = useState(false);
   const [fromName, setFromName] = useState("");
@@ -34,7 +35,7 @@ function App({ domElement }) {
   const [fromAddress1, setFromAddress1] = useState("");
   const [fromAddress2, setFromAddress2] = useState("");
   const [fromCity, setFromCity] = useState("");
-  const [fromState, setFromState] = useState("");
+  const [fromState, setFromState] = useState(US_STATES[0].Code);
   const [fromZip, setFromZip] = useState("");
   const [fromResidential, setFromResidential] = useState(false);
   const [packageWidth, setPackageWidth] = useState(undefined);
@@ -326,19 +327,26 @@ function App({ domElement }) {
                       placeholder="City"
                       onChange={(e) => setToCity(e.target.value)}
                     />
-                    <input
-                      type="state"
-                      id="balello-input-to-state"
-                      placeholder="State"
+
+                    <select
+                      className="balello-dropdown"
+                      value={toState}
                       onChange={(e) => setToState(e.target.value)}
-                    />
+                    >
+                      {US_STATES.map((state) => {
+                        return (
+                          <option value={state.Code} key={state.Code}>
+                            {state.State}
+                          </option>
+                        );
+                      })}
+                    </select>
                     <input
                       type="number"
                       id="balello-input-to-zipcode"
                       placeholder="Zip Code"
                       onChange={(e) => setToZip(e.target.value)}
                     />
-
                     <div>
                       <input
                         type="checkbox"
@@ -384,19 +392,25 @@ function App({ domElement }) {
                       placeholder="City"
                       onChange={(e) => setFromCity(e.target.value)}
                     />
-                    <input
-                      type="state"
-                      id="balello-input-from-state"
-                      placeholder="State"
+                    <select
+                      className="balello-dropdown"
+                      value={fromState}
                       onChange={(e) => setFromState(e.target.value)}
-                    />
+                    >
+                      {US_STATES.map((state) => {
+                        return (
+                          <option value={state.Code} key={state.Code}>
+                            {state.State}
+                          </option>
+                        );
+                      })}
+                    </select>
                     <input
                       type="number"
                       id="balello-input-from-zipcode"
                       placeholder="Zip Code"
                       onChange={(e) => setFromZip(e.target.value)}
                     />
-
                     <div className="balello-checkbox">
                       <input
                         type="checkbox"
