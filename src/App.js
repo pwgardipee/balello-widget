@@ -92,7 +92,8 @@ function App({ domElement }) {
   }, [rates, selectedRate]);
 
   useEffect(() => {
-    const weightOzs = (packageWeightLbs || 0) * 16 + packageWeightOz;
+    const weightOzs =
+      (parseInt(packageWeightLbs) || 0) * 16 + parseInt(packageWeightOz);
 
     const testLabel = {
       shipTo: {
