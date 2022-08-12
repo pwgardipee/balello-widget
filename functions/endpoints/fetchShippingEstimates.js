@@ -33,24 +33,14 @@ module.exports = functions.https.onRequest(async (request, response) => {
       );
       return;
     }
-
-    // Get all available carriers
-    let carriers;
-    try {
-      const result = await ShipEngine.listCarriers();
-      carriers = result;
-    } catch (e) {
-      response.send("Internal Server Error!");
-      return;
-    }
+    
+    const carriers = labelSession.data().selectedCarriers.map(sc => sc.carrierId)
 
     // Construct params object to send to Ship Engine
     const { shipTo, shipFrom, weight, height } = labelSession.data();
     const params = {
       rateOptions: {
         carrierIds: carriers
-          .map((carrier) => carrier.carrierId)
-          .filter((carrierId) => carrierId !== "se-1086304"), //FexEx doesn't work right now
       },
       shipment: {
         validateAddress: "no_validation",
