@@ -33,14 +33,15 @@ module.exports = functions.https.onRequest(async (request, response) => {
       );
       return;
     }
-    
+
     const carriers = labelSession.data().selectedCarriers.map(sc => sc.carrierId)
 
     // Construct params object to send to Ship Engine
     const { shipTo, shipFrom, weight, height } = labelSession.data();
     const params = {
       rateOptions: {
-        carrierIds: carriers
+        carrierIds: carriers,
+        packageTypes: ["package"]
       },
       shipment: {
         validateAddress: "no_validation",
