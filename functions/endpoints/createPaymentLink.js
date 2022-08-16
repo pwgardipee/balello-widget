@@ -59,6 +59,7 @@ module.exports = functions.https.onRequest(async (request, response) => {
     try {
       rate = await ShipEngine.getRateByID(rateID);
       labelPrice = rate.shipping_amount.amount * 100; //convert to USD for Stripe
+      labelPrice = Number(labelPrice.toFixed(2));
     } catch (e) {
       response.send({
         error: `Error fetching rate ${rateID}`,
